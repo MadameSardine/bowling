@@ -20,4 +20,12 @@ describe('A Bowling game frame',function(){
 
 	});
 
+	it('can have a first roll',function(){
+		frame = new Frame;
+		roll1 = new Roll;
+		frame.add_roll(roll1);
+		expect(frame.rolls).toEqual([roll1]);
+	});
+
 });
+

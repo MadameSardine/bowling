@@ -10,6 +10,7 @@ function Frame(){
 };
 
 function Roll(){
+	this.pins_count = 10;
 	this.pins_down = 0;
 
 };

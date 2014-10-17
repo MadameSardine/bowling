@@ -45,10 +45,20 @@ describe ('A Bowling game roll',function(){
 
 	var roll;
 
-	it('has zero pins knocked down at inception',function(){
+	beforeEach(function(){
 		roll = new Roll;
-		expect(roll.pins_down).toEqual(0);
 
 	});
+
+	it('has 10 pins',function(){
+		expect(roll.pins_count).toEqual(10);
+
+	});
+
+	it('has zero pins knocked down at inception',function(){
+		expect(roll.pins_down).toEqual(0);
+	});
+
+
 });
 

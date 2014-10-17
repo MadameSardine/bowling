@@ -60,12 +60,20 @@ describe ('A Bowling game roll',function(){
 	});
 
 	it('has zero pins knocked down at inception',function(){
-		expect(roll.pinsDownCount).toEqual(0);
+		roll.receivePins(this);
+		expect(roll.pinsDown).toEqual([]);
 	});
 
-	it('can have pins knocked down during the game',function(){
-		roll.knockDownPins(1)
-		expect(roll.pinsDown).toEqual(1);
+	// it('can have pins knocked down during the game',function(){
+	// 	roll.knockDownPin(this);
+	// 	expect(roll.pinsDown.length).toEqual(1);
+	// });
+
+	it('should know how many pins are down',function(){
+		roll.receivePins(this);
+		roll.pins[1].knockedDown(this);
+		roll.assessPins(this);
+		expect(roll.pinsDown.length).toEqual(1);
 	});
 
 

@@ -10,8 +10,7 @@ function Frame(){
 
 function Roll(){
 	this.pins = [];
-	this.pinsCount = 10;
-	this.pinsDownCount = 0;
+	this.pinsDown = [];
 
 };
 
@@ -20,14 +19,18 @@ function Pin(){
 };
 
 
-
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
 
 };
 
-Roll.prototype.knockDownPins = function(numberOfPinsDown) {
-	this.pinsDown = numberOfPinsDown;
+Roll.prototype.assessPins = function() {
+	for (i = 0 ; i <10 ; i++)
+		if(this.pins[i].isUp === false){
+			this.pinsDown.push(this.pins[i])
+
+		};
+	
 };
 
 Roll.prototype.receivePins = function() {

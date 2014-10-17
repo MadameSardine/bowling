@@ -82,5 +82,10 @@ describe('A Bowling game pin',function(){
 
  	});
 
+ 	it('can be knocked down',function(){
+ 		pin.knockedDown(this);
+ 		expect(pin.isUp).toBe(false);
+ 	});
+
 });
 

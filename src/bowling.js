@@ -30,5 +30,9 @@ Roll.prototype.knockDownPins = function(numberOfPinsDown) {
 	this.pinsDown = numberOfPinsDown;
 };
 
+Pin.prototype.knockedDown = function() {
+	this.isUp = false;
+};
+
 	
 

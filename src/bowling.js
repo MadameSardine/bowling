@@ -15,6 +15,10 @@ function Roll(){
 
 };
 
+function Pin(){
+	this.isUp = true
+};
+
 
 
 Frame.prototype.addRoll = function(roll) {

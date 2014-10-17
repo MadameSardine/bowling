@@ -67,3 +67,20 @@ describe ('A Bowling game roll',function(){
 
 });
 
+describe('A Bowling game pin',function(){
+ 	 
+ 	var pin;
+
+	beforeEach(function(){
+		pin = new Pin;
+
+	});
+
+
+ 	it('is up',function(){
+ 		expect(pin.isUp).toBe(true);
+
+ 	});
+
+});
+

@@ -5,13 +5,13 @@ function Game(){
 };
 
 function Frame(){
-
 	this.rolls = [];
 };
 
 function Roll(){
+	this.pins = [];
 	this.pinsCount = 10;
-	this.pinsDown = 0;
+	this.pinsDownCount = 0;
 
 };
 
@@ -28,6 +28,12 @@ Frame.prototype.addRoll = function(roll) {
 
 Roll.prototype.knockDownPins = function(numberOfPinsDown) {
 	this.pinsDown = numberOfPinsDown;
+};
+
+Roll.prototype.receivePins = function() {
+	for (i = 0 ; i <10 ; i++)
+		this.pins.push(new Pin);
+	
 };
 
 Pin.prototype.knockedDown = function() {

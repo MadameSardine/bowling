@@ -9,7 +9,10 @@ function Frame(){
 	this.rolls = [];
 };
 
-function Roll(){};
+function Roll(){
+	this.pins_down = 0;
+
+};
 
 
 

@@ -41,3 +41,14 @@ describe('A Bowling game frame',function(){
 
 });
 
+describe ('A Bowling game roll',function(){
+
+	var roll;
+
+	it('has zero pins knocked down at inception',function(){
+		roll = new Roll;
+		expect(roll.pins_down).toEqual(0);
+
+	});
+});
+

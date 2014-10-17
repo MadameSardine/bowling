@@ -26,15 +26,15 @@ describe('A Bowling game frame',function(){
 
 	it('can have a first roll',function(){
 		roll1 = new Roll;
-		frame.add_roll(roll1);
+		frame.addRoll(roll1);
 		expect(frame.rolls).toEqual([roll1]);
 	});
 
 	it('can have a second roll',function(){
 		roll1 = new Roll;
 		roll2 = new Roll;
-		frame.add_roll(roll1);
-		frame.add_roll(roll2);
+		frame.addRoll(roll1);
+		frame.addRoll(roll2);
 		expect(frame.rolls).toEqual([roll1, roll2]);
 
 	});
@@ -51,12 +51,17 @@ describe ('A Bowling game roll',function(){
 	});
 
 	it('has 10 pins',function(){
-		expect(roll.pins_count).toEqual(10);
+		expect(roll.pinsCount).toEqual(10);
 
 	});
 
 	it('has zero pins knocked down at inception',function(){
-		expect(roll.pins_down).toEqual(0);
+		expect(roll.pinsDown).toEqual(0);
+	});
+
+	it('can have pins knocked down during the game',function(){
+		roll.knockDownPins(1)
+		expect(roll.pinsDown).toEqual(1);
 	});
 
 

@@ -10,16 +10,20 @@ function Frame(){
 };
 
 function Roll(){
-	this.pins_count = 10;
-	this.pins_down = 0;
+	this.pinsCount = 10;
+	this.pinsDown = 0;
 
 };
 
 
 
-Frame.prototype.add_roll = function(roll) {
+Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
 
+};
+
+Roll.prototype.knockDownPins = function(numberOfPinsDown) {
+	this.pinsDown = numberOfPinsDown;
 };
 
 	

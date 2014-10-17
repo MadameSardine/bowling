@@ -4,3 +4,8 @@ function Game(){
 
 };
 
+function Frame(){
+
+	this.rolls = [];
+};
+

@@ -39,47 +39,31 @@ describe('A Bowling game frame',function(){
 
 	});
 
-});
-
-describe ('A Bowling game roll',function(){
-
-	var roll;
-
-	beforeEach(function(){
-		roll = new Roll;
-
-	});
 	it ('has no pins at inception',function(){
-		expect(roll.pins).toEqual([]);
+		expect(frame.pins).toEqual([]);
 	});
 
 	it('should receive 10 pins when playing',function(){
-		roll.receivePins(this);
-		expect(roll.pins.length).toEqual(10);
+		frame.receivePins(this);
+		expect(frame.pins.length).toEqual(10);
 
 	});
 
 	it('has zero pins knocked down at inception',function(){
-		roll.receivePins(this);
-		expect(roll.pinsDown).toEqual([]);
+		frame.receivePins(this);
+		expect(frame.pinsDown).toEqual([]);
 	});
-
-	// it('can have pins knocked down during the game',function(){
-	// 	roll.knockDownPin(this);
-	// 	expect(roll.pinsDown.length).toEqual(1);
-	// });
 
 	it('should know how many pins are down',function(){
-		roll.receivePins(this);
-		roll.pins[1].knockedDown(this);
-		roll.assessPins(this);
-		expect(roll.pinsDown.length).toEqual(1);
+		frame.receivePins(this);
+		frame.pins[1].knockedDown(this);
+		frame.assessPins(this);
+		expect(frame.pinsDown.length).toEqual(1);
 	});
-
-
 
 
 });
+
 
 describe('A Bowling game pin',function(){
  	 

@@ -6,12 +6,12 @@ function Game(){
 
 function Frame(){
 	this.rolls = [];
+	this.pins = [];
+	this.pinsDown = [];
 };
 
 function Roll(){
-	this.pins = [];
-	this.pinsDown = [];
-
+	
 };
 
 function Pin(){
@@ -24,7 +24,7 @@ Frame.prototype.addRoll = function(roll) {
 
 };
 
-Roll.prototype.assessPins = function() {
+Frame.prototype.assessPins = function() {
 	for (i = 0 ; i <10 ; i++)
 		if(this.pins[i].isUp === false){
 			this.pinsDown.push(this.pins[i])
@@ -33,7 +33,7 @@ Roll.prototype.assessPins = function() {
 	
 };
 
-Roll.prototype.receivePins = function() {
+Frame.prototype.receivePins = function() {
 	for (i = 0 ; i <10 ; i++)
 		this.pins.push(new Pin);
 	

@@ -39,7 +39,11 @@ Frame.prototype.receivePins = function() {
 	
 };
 
-Pin.prototype.knockedDown = function() {
+Roll.prototype.knowckDown = function(pin) {
+	pin.down();
+};
+
+Pin.prototype.down = function() {
 	this.isUp = false;
 };
 

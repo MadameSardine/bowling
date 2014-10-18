@@ -56,11 +56,26 @@ describe('A Bowling game frame',function(){
 
 	it('should know how many pins are down',function(){
 		frame.receivePins(this);
-		frame.pins[1].knockedDown(this);
+		frame.pins[1].down(this);
 		frame.assessPins(this);
 		expect(frame.pinsDown.length).toEqual(1);
 	});
 
+
+});
+
+describe('A roll',function(){
+
+	var roll;
+	var pin;
+
+	it('can knock down pins',function(){
+		roll = new Roll;
+		pin = new Pin;
+		roll.knowckDown(pin)
+		expect(pin.isUp).toBe(false);
+
+	});
 
 });
 
@@ -81,7 +96,7 @@ describe('A Bowling game pin',function(){
  	});
 
  	it('can be knocked down',function(){
- 		pin.knockedDown(this);
+ 		pin.down(this);
  		expect(pin.isUp).toBe(false);
  	});
 

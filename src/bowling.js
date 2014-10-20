@@ -40,7 +40,7 @@ Frame.prototype.receivePins = function() {
 	
 };
 
-Roll.prototype.knowckDown = function(pin) {
+Roll.prototype.knockDown = function(pin) {
 	pin.down();
 };
 

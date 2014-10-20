@@ -93,7 +93,7 @@ describe('A roll',function(){
 
 	it('can knock down pins',function(){
 		pin = new Pin;
-		roll.knowckDown(pin)
+		roll.knockDown(pin)
 		expect(pin.isUp).toBe(false);
 
 	});

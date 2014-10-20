@@ -22,6 +22,7 @@ function Pin(){
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
 
+
 };
 
 Frame.prototype.assessPins = function() {
@@ -41,6 +42,12 @@ Frame.prototype.receivePins = function() {
 
 Roll.prototype.knowckDown = function(pin) {
 	pin.down();
+};
+
+Roll.prototype.strike = function(frame) {
+	frame.pins.forEach(function(pin) {
+		pin.down(this);
+	}) ;
 };
 
 Pin.prototype.down = function() {

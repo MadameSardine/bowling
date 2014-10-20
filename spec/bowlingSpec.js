@@ -15,6 +15,8 @@ describe('A Bowling game frame',function(){
 	var frame;
 	beforeEach(function(){
 		frame = new Frame;
+		roll1 = new Roll;
+		roll2 = new Roll;
 
 	});
 
@@ -25,14 +27,11 @@ describe('A Bowling game frame',function(){
 	});
 
 	it('can have a first roll',function(){
-		roll1 = new Roll;
 		frame.addRoll(roll1);
 		expect(frame.rolls).toEqual([roll1]);
 	});
 
 	it('can have a second roll',function(){
-		roll1 = new Roll;
-		roll2 = new Roll;
 		frame.addRoll(roll1);
 		frame.addRoll(roll2);
 		expect(frame.rolls).toEqual([roll1, roll2]);
@@ -61,6 +60,23 @@ describe('A Bowling game frame',function(){
 		expect(frame.pinsDown.length).toEqual(1);
 	});
 
+	it('has a strike if 10 pins are knocked down in a roll',function(){
+		frame.receivePins(this);
+		frame.addRoll(roll1);
+		roll1.strike(frame);
+		frame.assessPins(this);
+		expect(frame.pinsDown.length).toEqual(10);
+	});
+
+	// it('should not have a second roll if there is a strike',function(){
+	// 	frame.receivePins(this);
+	// 	frame.addRoll(roll1);
+	// 	roll1.strike(frame);
+	// 	frame.assessPins(this);
+	// 	expect(frame.addRoll(roll2).throwError("Strike already")).toBe(true);
+
+	// });
+
 
 });
 
@@ -68,14 +84,21 @@ describe('A roll',function(){
 
 	var roll;
 	var pin;
+	var frame;
+
+	beforeEach(function(){
+		roll = new Roll;
+
+	});
 
 	it('can knock down pins',function(){
-		roll = new Roll;
 		pin = new Pin;
 		roll.knowckDown(pin)
 		expect(pin.isUp).toBe(false);
 
 	});
+
+
 
 });
 

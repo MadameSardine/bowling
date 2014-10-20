@@ -15,7 +15,7 @@ function Roll(){
 };
 
 function Pin(){
-	this.isUp = true
+	this.isUp = true;
 };
 
 
@@ -29,8 +29,8 @@ Frame.prototype.assessPins = function() {
 	for (i = 0 ; i <10 ; i++)
 		if(this.pins[i].isUp === false){
 			this.pinsDown.push(this.pins[i])
-
 		};
+	this.pins.splice(0,1)
 	
 };
 
@@ -40,7 +40,7 @@ Frame.prototype.receivePins = function() {
 	
 };
 
-Roll.prototype.knockDown = function(pin) {
+Frame.prototype.knockDown = function(pin) {
 	pin.down();
 };
 

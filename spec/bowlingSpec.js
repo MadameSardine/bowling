@@ -53,11 +53,26 @@ describe('A Bowling game frame',function(){
 		expect(frame.pinsDown).toEqual([]);
 	});
 
-	it('should know how many pins are down',function(){
+	it('can knock down pins',function(){
+		pin = new Pin;
+		frame.knockDown(pin)
+		expect(pin.isUp).toBe(false);
+
+	});
+
+
+	it('knows how many pins are knocked down',function(){
 		frame.receivePins(this);
-		frame.pins[1].down(this);
+		frame.knockDown(frame.pins[0]);
 		frame.assessPins(this);
 		expect(frame.pinsDown.length).toEqual(1);
+	});
+
+	it('knows how many pins are up',function(){
+		frame.receivePins(this);
+		frame.knockDown(frame.pins[0]);
+		frame.assessPins(this);
+		expect(frame.pins.length).toEqual(9);
 	});
 
 	it('has a strike if 10 pins are knocked down in a roll',function(){
@@ -91,12 +106,12 @@ describe('A roll',function(){
 
 	});
 
-	it('can knock down pins',function(){
-		pin = new Pin;
-		roll.knockDown(pin)
-		expect(pin.isUp).toBe(false);
+	// it('can knock down pins',function(){
+	// 	pin = new Pin;
+	// 	roll.knockDown(pin)
+	// 	expect(pin.isUp).toBe(false);
 
-	});
+	// });
 
 
 

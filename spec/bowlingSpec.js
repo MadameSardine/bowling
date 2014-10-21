@@ -120,14 +120,14 @@ describe('A roll',function(){
 		expect(pin.isUp).toBe(false);
 	});
 
-	// it('has knocked down 10 pins if it is a strike',function(){
-	// 	frame = new Frame;
-	// 	frame.receivePins(this);
-	// 	frame.addRoll(roll1);
-	// 	frame.rolls[0].strike(this);
-	// 	frame.assessPins(this);
-	// 	expect(frame.pinsDown.length).toEqual(10);
-	// });
+	it('has knocked down 10 pins if it is a strike',function(){
+		frame = new Frame;
+		frame.receivePins(this);
+		frame.addRoll(roll1);
+		roll1.strike(this);
+		roll1.frame.assessPins(this);
+		expect(roll1.frame.pinsDown.length).toEqual(10);
+	});
 
 });
 

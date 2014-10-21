@@ -53,11 +53,6 @@ Frame.prototype.receivePins = function() {
 };
 
 
-// Frame.prototype.strike = function() {
-// 	this.pins.forEach(function(pin) {
-// 		pin.down(this);
-// 	}) ;
-// };
 
 Frame.prototype.score = function() {
 	return this.pinsDown.length;
@@ -67,10 +62,11 @@ Roll.prototype.knockDown = function(pin) {
 	pin.down(this);
 };
 
+
 Roll.prototype.strike = function() {
-	for (i = 0 ; i <10 ; i++)
-		this.knockDown(this.frame.pins[i]);
-	
+	this.frame.pins.forEach(function(pin) {
+		pin.down(this);
+	}) ;
 };
 
 Pin.prototype.down = function() {

@@ -20,7 +20,7 @@ function Pin(){
 Game.prototype.addFrame = function(frame) {
 	this.frames.push(frame);
 };
-Game.prototype.regularScore = function(frames) {
+Game.prototype.totalScore = function(frames) {
 	return 0;
 };
 

@@ -3,6 +3,7 @@ describe('A Bowling game',function(){
 	var game;
 	beforeEach(function(){
 		game = new Game;
+		frame = new Frame;
 	});
 
 	it('has no frames at inception', function (){
@@ -10,13 +11,13 @@ describe('A Bowling game',function(){
 	});
 
 	it('can add a frame',function(){
-		frame = new Frame;
 		game.addFrame(frame);
 		expect(game.frames).toEqual([frame]);
 	});
 
-	it('can calculate the total regular score',function(){
-		expect(game.regularScore(frames)).toEqual(0);
+	it('total score should be zero at inception',function(){
+		game.addFrame(frame)
+		expect(game.totalScore(frames)).toEqual(0);
 	});
 
 

@@ -62,6 +62,10 @@ Frame.prototype.score = function() {
 	return this.pinsDown.length;
 };
 
+Roll.prototype.knockDown = function(pin) {
+	pin.down(this);
+};
+
 Pin.prototype.down = function() {
 	this.isUp = false;
 };

@@ -107,6 +107,19 @@ describe('A Bowling game frame',function(){
 
 });
 
+describe('A roll',function(){
+
+	var roll;
+
+	it('can knock down a pin',function(){
+		pin = new Pin;
+		roll = new Roll;
+		roll.knockDown(pin);
+		expect(pin.isUp).toBe(false);
+	});
+
+});
+
 
 describe('A Bowling game pin',function(){
  	 

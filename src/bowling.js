@@ -22,7 +22,7 @@ Game.prototype.addFrame = function(frame) {
 	this.frames.push(frame);
 };
 
-Game.prototype.totalScore = function() {
+Game.prototype.scoreBeforeBonus = function() {
 	var total = 0;
 	for (i = 0 ; i < this.frames.length ; i++)
 		{total += this.frames[i].score(this)

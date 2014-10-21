@@ -29,6 +29,13 @@ Game.prototype.totalScore = function() {
 		return total;
 };
 
+Game.prototype.strikeBonus = function(frame) {
+	var frameIndex = this.frames.indexOf(frame);
+	if (frame.isStrike(this)){
+		return this.frames[frameIndex +1].score(this)
+	};
+};
+
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll);
 	roll.frame = this;

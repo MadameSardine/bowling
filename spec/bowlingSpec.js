@@ -28,13 +28,26 @@ describe('A Bowling game',function(){
 		expect(game.totalScore(this)).toEqual(1);
 	});
 
-	// it('can calculate a strike bonus',function(){
-	// 	frame1 = new Frame;
-	// 	frame2 = new Frame;
-	// 	game.addFrame(frame1);
-	// 	game.addFrame(frame2);
+	it('can calculate a strike bonus',function(){
+		frame1 = new Frame;
+		frame1.receivePins(this);
+		frame1.addRoll(new Roll);
+		for (i = 0 ; i < 10 ; i ++) {
+		frame1.rolls[0].knockDown(frame1.pins[i])
+			};
+		frame1.assessPins(this);
+		game.addFrame(frame1);
+		frame2 = new Frame;
+		frame2.receivePins(this);
+		frame2.addRoll(new Roll);
+		frame2.rolls[0].knockDown(frame2.pins[0]);
+		frame2.addRoll(new Roll);
+		frame2.rolls[1].knockDown(frame2.pins[1]);
+		frame2.assessPins(this);
+		game.addFrame(frame2);
+		expect(game.strikeBonus(game.frames[0])).toEqual(2);
 
-	// });
+	});
 
 
 

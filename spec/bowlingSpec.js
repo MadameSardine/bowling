@@ -90,13 +90,6 @@ describe('A Bowling game frame',function(){
 		expect(frame.pins.length).toEqual(9);
 	});
 
-	// it('has a strike if 10 pins are knocked down in a roll',function(){
-	// 	frame.receivePins(this);
-	// 	frame.strike(this);
-	// 	frame.assessPins(this);
-	// 	expect(frame.pinsDown.length).toEqual(10);
-	// 	expect(frame.pins.length).toEqual(0);
-	// });
 
 	it('knows its score',function(){
 		frame.receivePins(this);
@@ -111,12 +104,30 @@ describe('A roll',function(){
 
 	var roll;
 
-	it('can knock down a pin',function(){
+	beforeEach (function(){
 		pin = new Pin;
-		roll = new Roll;
-		roll.knockDown(pin);
+		roll1 = new Roll;
+	});
+
+	it('can be added to a frame',function(){
+		frame = new Frame;
+		frame.addRoll(roll1)
+		expect(roll1.frame).toEqual(frame);
+	});
+
+	it('can knock down a pin',function(){
+		roll1.knockDown(pin);
 		expect(pin.isUp).toBe(false);
 	});
+
+	// it('has knocked down 10 pins if it is a strike',function(){
+	// 	frame = new Frame;
+	// 	frame.receivePins(this);
+	// 	frame.addRoll(roll1);
+	// 	frame.rolls[0].strike(this);
+	// 	frame.assessPins(this);
+	// 	expect(frame.pinsDown.length).toEqual(10);
+	// });
 
 });
 

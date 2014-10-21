@@ -10,7 +10,7 @@ function Frame(){
 };
 
 function Roll(){
-	
+	this.frame = null;
 };
 
 function Pin(){
@@ -30,7 +30,8 @@ Game.prototype.totalScore = function() {
 };
 
 Frame.prototype.addRoll = function(roll) {
-	this.rolls.push(roll)
+	this.rolls.push(roll);
+	roll.frame = this;
 };
 
 
@@ -64,6 +65,12 @@ Frame.prototype.score = function() {
 
 Roll.prototype.knockDown = function(pin) {
 	pin.down(this);
+};
+
+Roll.prototype.strike = function() {
+	for (i = 0 ; i <10 ; i++)
+		this.knockDown(this.frame.pins[i]);
+	
 };
 
 Pin.prototype.down = function() {

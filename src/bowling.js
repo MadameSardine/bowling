@@ -49,7 +49,6 @@ Frame.prototype.assessPins = function() {
 Frame.prototype.receivePins = function() {
 	for (i = 0 ; i <10 ; i++)
 		this.pins.push(new Pin);
-	
 };
 
 
@@ -61,16 +60,14 @@ Frame.prototype.spare = function() {
 	return this.score(this) === 10;
 };
 
+Frame.prototype.strike = function(first_argument) {
+	return (this.score(this) === 10 && !this.rolls[1]) ;
+};
+
 Roll.prototype.knockDown = function(pin) {
 	pin.down(this);
 };
 
-
-Roll.prototype.strike = function() {
-	this.frame.pins.forEach(function(pin) {
-		pin.down(this);
-	}) ;
-};
 
 Pin.prototype.down = function() {
 	this.isUp = false;

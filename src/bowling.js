@@ -11,6 +11,7 @@ function Frame(){
 
 function Roll(){
 	this.frame = null;
+	this.rollScore = 0;
 };
 
 function Pin(){
@@ -37,11 +38,10 @@ Game.prototype.strikeBonus = function(frame) {
 };
 
 Game.prototype.spareBonus = function(frame) {
-	// var frameIndex = this.frame.indexOf(frame);
-	// if (frame.isSpare(this)){
-	// 	return this.frames.rolls[0].score(this)
-	// };
-	return 1;
+	var frameIndex = this.frames.indexOf(frame);
+	if (frame.isSpare(this)){
+		return this.frames[frameIndex + 1].rolls[0].rollScore
+	};
 };
 
 Frame.prototype.addRoll = function(roll) {
@@ -81,10 +81,7 @@ Frame.prototype.isStrike = function(first_argument) {
 
 Roll.prototype.knockDown = function(pin) {
 	pin.down(this);
-};
-
-Roll.prototype.score = function() {
-	return this.frame.score(this);
+	this.rollScore += 1;
 };
 
 

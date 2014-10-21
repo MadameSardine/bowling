@@ -64,6 +64,7 @@ describe('A Bowling game',function(){
 		frame2.receivePins(this);
 		frame2.addRoll(new Roll);
 		frame2.rolls[0].knockDown(frame2.pins[0]);
+		frame2.assessPins(this);
 		frame2.addRoll(new Roll);
 		frame2.rolls[1].knockDown(frame2.pins[1]);
 		frame2.rolls[1].knockDown(frame2.pins[2]);
@@ -71,8 +72,6 @@ describe('A Bowling game',function(){
 		game.addFrame(frame2);
 		expect(game.spareBonus(game.frames[0])).toEqual(1);
 	});
-
-
 
 });
 
@@ -189,13 +188,16 @@ describe('A roll',function(){
 		expect(pin.isUp).toBe(false);
 	});
 
-	it('knows its score',function(){
+	it('should have a score of zero at inception',function(){
+		expect(roll1.rollScore).toEqual(0);
+	});
+
+	it('knows its score after knocking pins',function(){
 		frame = new Frame;
 		frame.receivePins(this);
 		frame.addRoll(roll1);
 		roll1.knockDown(roll1.frame.pins[0]);
-		roll1.frame.assessPins(this);
-		expect(roll1.score()).toEqual(1);
+		expect(roll1.rollScore).toEqual(1);
 	});
 
 });

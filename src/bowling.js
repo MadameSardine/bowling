@@ -22,8 +22,8 @@ function Pin(){
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
 
-
 };
+
 
 Frame.prototype.assessPins = function() {
 	for (i = this.pins.length-1 ; i >=0 ; i--)

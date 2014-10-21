@@ -20,13 +20,17 @@ function Pin(){
 Game.prototype.addFrame = function(frame) {
 	this.frames.push(frame);
 };
-Game.prototype.totalScore = function(frames) {
-	return 0;
+
+Game.prototype.totalScore = function() {
+	var total = 0;
+	for (i = 0 ; i < this.frames.length ; i++)
+		{total += this.frames[i].score(this)
+		};
+		return total;
 };
 
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
-
 };
 
 

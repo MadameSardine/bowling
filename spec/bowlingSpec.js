@@ -16,8 +16,16 @@ describe('A Bowling game',function(){
 	});
 
 	it('total score should be zero at inception',function(){
-		game.addFrame(frame)
-		expect(game.totalScore(frames)).toEqual(0);
+		game.addFrame(frame);
+		expect(game.totalScore(this)).toEqual(0);
+	});
+
+	it('can calculate total score',function(){
+		frame.receivePins(this);
+		frame.pins[0].down(this);
+		frame.assessPins(this);
+		game.addFrame(frame);
+		expect(game.totalScore(this)).toEqual(1);
 	});
 
 

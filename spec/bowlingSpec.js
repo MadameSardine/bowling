@@ -28,6 +28,14 @@ describe('A Bowling game',function(){
 		expect(game.totalScore(this)).toEqual(1);
 	});
 
+	// it('can calculate a strike bonus',function(){
+	// 	frame1 = new Frame;
+	// 	frame2 = new Frame;
+	// 	game.addFrame(frame1);
+	// 	game.addFrame(frame2);
+
+	// });
+
 
 
 });
@@ -110,7 +118,7 @@ describe('A Bowling game frame',function(){
 		frame.rolls[1].knockDown(frame.pins[i])
 			};
 		frame.assessPins(this);
-		expect(frame.spare(this)).toBe(true);
+		expect(frame.isSpare(this)).toBe(true);
 	});
 
 	it('can have a strike',function(){
@@ -120,7 +128,7 @@ describe('A Bowling game frame',function(){
 		frame.rolls[0].knockDown(frame.pins[i])
 			};
 		frame.assessPins(this);
-		expect(frame.strike(this)).toBe(true);
+		expect(frame.isStrike(this)).toBe(true);
 	});
 
 });

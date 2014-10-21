@@ -56,11 +56,11 @@ Frame.prototype.score = function() {
 	return this.pinsDown.length;
 };
 
-Frame.prototype.spare = function() {
+Frame.prototype.isSpare = function() {
 	return this.score(this) === 10;
 };
 
-Frame.prototype.strike = function(first_argument) {
+Frame.prototype.isStrike = function(first_argument) {
 	return (this.score(this) === 10 && !this.rolls[1]) ;
 };
 

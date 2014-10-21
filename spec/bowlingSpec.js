@@ -93,9 +93,12 @@ describe('A Bowling game frame',function(){
 
 	it('knows its score',function(){
 		frame.receivePins(this);
-		frame.pins[0].down(this);
+		frame.addRoll(roll1);
+		frame.addRoll(roll2);
+		frame.rolls[0].knockDown(frame.pins[0]);
+		frame.rolls[1].knockDown(frame.pins[1]);
 		frame.assessPins(this);
-		expect(frame.score(this)).toEqual(1);
+		expect(frame.score(this)).toEqual(2);
 	});
 
 });

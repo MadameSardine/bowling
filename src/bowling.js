@@ -53,7 +53,6 @@ Frame.prototype.receivePins = function() {
 };
 
 
-
 Frame.prototype.score = function() {
 	return this.pinsDown.length;
 };

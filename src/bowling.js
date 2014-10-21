@@ -53,6 +53,10 @@ Frame.prototype.strike = function() {
 	}) ;
 };
 
+Frame.prototype.score = function() {
+	return this.pinsDown.length;
+};
+
 Pin.prototype.down = function() {
 	this.isUp = false;
 };

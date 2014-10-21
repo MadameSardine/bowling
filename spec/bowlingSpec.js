@@ -83,6 +83,13 @@ describe('A Bowling game frame',function(){
 		expect(frame.pins.length).toEqual(0);
 	});
 
+	it('knows its score',function(){
+		frame.receivePins(this);
+		frame.knockDown(frame.pins[0]);
+		frame.assessPins(this);
+		expect(frame.score(this)).toEqual(1);
+	});
+
 	// it('should not have a second roll if there is a strike',function(){
 	// 	frame.receivePins(this);
 	// 	frame.addRoll(roll1);

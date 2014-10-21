@@ -1,5 +1,4 @@
 function Game(){
-
 	this.frames = [];
 
 };
@@ -18,6 +17,12 @@ function Pin(){
 	this.isUp = true;
 };
 
+Game.prototype.addFrame = function(frame) {
+	this.frames.push(frame);
+};
+Game.prototype.regularScore = function(frames) {
+	return 0;
+};
 
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll)
@@ -43,11 +48,11 @@ Frame.prototype.receivePins = function() {
 };
 
 
-Frame.prototype.strike = function() {
-	this.pins.forEach(function(pin) {
-		pin.down(this);
-	}) ;
-};
+// Frame.prototype.strike = function() {
+// 	this.pins.forEach(function(pin) {
+// 		pin.down(this);
+// 	}) ;
+// };
 
 Frame.prototype.score = function() {
 	return this.pinsDown.length;

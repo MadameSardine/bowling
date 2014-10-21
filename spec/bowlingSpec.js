@@ -1,12 +1,25 @@
 describe('A Bowling game',function(){
 
 	var game;
-
-	it('has frames', function (){
+	beforeEach(function(){
 		game = new Game;
-		expect(game.frames).toEqual([]);
-
 	});
+
+	it('has no frames at inception', function (){
+		expect(game.frames).toEqual([]);
+	});
+
+	it('can add a frame',function(){
+		frame = new Frame;
+		game.addFrame(frame);
+		expect(game.frames).toEqual([frame]);
+	});
+
+	it('can calculate the total regular score',function(){
+		expect(game.regularScore(frames)).toEqual(0);
+	});
+
+
 
 });
 
@@ -68,13 +81,13 @@ describe('A Bowling game frame',function(){
 		expect(frame.pins.length).toEqual(9);
 	});
 
-	it('has a strike if 10 pins are knocked down in a roll',function(){
-		frame.receivePins(this);
-		frame.strike(this);
-		frame.assessPins(this);
-		expect(frame.pinsDown.length).toEqual(10);
-		expect(frame.pins.length).toEqual(0);
-	});
+	// it('has a strike if 10 pins are knocked down in a roll',function(){
+	// 	frame.receivePins(this);
+	// 	frame.strike(this);
+	// 	frame.assessPins(this);
+	// 	expect(frame.pinsDown.length).toEqual(10);
+	// 	expect(frame.pins.length).toEqual(0);
+	// });
 
 	it('knows its score',function(){
 		frame.receivePins(this);

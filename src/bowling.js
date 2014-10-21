@@ -36,6 +36,14 @@ Game.prototype.strikeBonus = function(frame) {
 	};
 };
 
+Game.prototype.spareBonus = function(frame) {
+	// var frameIndex = this.frame.indexOf(frame);
+	// if (frame.isSpare(this)){
+	// 	return this.frames.rolls[0].score(this)
+	// };
+	return 1;
+};
+
 Frame.prototype.addRoll = function(roll) {
 	this.rolls.push(roll);
 	roll.frame = this;
@@ -73,6 +81,10 @@ Frame.prototype.isStrike = function(first_argument) {
 
 Roll.prototype.knockDown = function(pin) {
 	pin.down(this);
+};
+
+Roll.prototype.score = function() {
+	return this.frame.score(this);
 };
 
 

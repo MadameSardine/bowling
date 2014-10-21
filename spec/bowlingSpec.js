@@ -46,7 +46,30 @@ describe('A Bowling game',function(){
 		frame2.assessPins(this);
 		game.addFrame(frame2);
 		expect(game.strikeBonus(game.frames[0])).toEqual(2);
+	});
 
+	it('can calculate a spare bonus',function(){
+		frame1 = new Frame;
+		frame1.receivePins(this);
+		frame1.addRoll(new Roll);
+		frame1.rolls[0].knockDown(frame1.pins[9]);
+		frame1.assessPins(this);
+		frame1.addRoll(new Roll);
+		for (i = 0 ; i < 9 ; i ++) {
+		frame1.rolls[1].knockDown(frame1.pins[i])
+			};
+		frame1.assessPins(this);
+		game.addFrame(frame1);
+		frame2 = new Frame;
+		frame2.receivePins(this);
+		frame2.addRoll(new Roll);
+		frame2.rolls[0].knockDown(frame2.pins[0]);
+		frame2.addRoll(new Roll);
+		frame2.rolls[1].knockDown(frame2.pins[1]);
+		frame2.rolls[1].knockDown(frame2.pins[2]);
+		frame2.assessPins(this);
+		game.addFrame(frame2);
+		expect(game.spareBonus(game.frames[0])).toEqual(1);
 	});
 
 
@@ -164,6 +187,15 @@ describe('A roll',function(){
 	it('can knock down a pin',function(){
 		roll1.knockDown(pin);
 		expect(pin.isUp).toBe(false);
+	});
+
+	it('knows its score',function(){
+		frame = new Frame;
+		frame.receivePins(this);
+		frame.addRoll(roll1);
+		roll1.knockDown(roll1.frame.pins[0]);
+		roll1.frame.assessPins(this);
+		expect(roll1.score()).toEqual(1);
 	});
 
 });

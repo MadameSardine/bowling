@@ -101,6 +101,18 @@ describe('A Bowling game frame',function(){
 		expect(frame.score(this)).toEqual(2);
 	});
 
+	it('can have a spare',function(){
+		frame.receivePins(this);
+		frame.addRoll(roll1);
+		frame.addRoll(roll2);
+		frame.rolls[0].knockDown(frame.pins[9]);
+		for (i = 0 ; i < 9 ; i ++) {
+		frame.rolls[1].knockDown(frame.pins[i])
+			};
+		frame.assessPins(this);
+		expect(frame.spare(this)).toBe(true);
+	});
+
 });
 
 describe('A roll',function(){

@@ -53,24 +53,17 @@ describe('A Bowling game frame',function(){
 		expect(frame.pinsDown).toEqual([]);
 	});
 
-	it('can knock down pins',function(){
-		pin = new Pin;
-		frame.knockDown(pin)
-		expect(pin.isUp).toBe(false);
-
-	});
-
 
 	it('knows how many pins are knocked down',function(){
 		frame.receivePins(this);
-		frame.knockDown(frame.pins[0]);
+		frame.pins[0].down(this);
 		frame.assessPins(this);
 		expect(frame.pinsDown.length).toEqual(1);
 	});
 
 	it('knows how many pins are up',function(){
 		frame.receivePins(this);
-		frame.knockDown(frame.pins[0]);
+		frame.pins[0].down(this);
 		frame.assessPins(this);
 		expect(frame.pins.length).toEqual(9);
 	});
@@ -85,42 +78,10 @@ describe('A Bowling game frame',function(){
 
 	it('knows its score',function(){
 		frame.receivePins(this);
-		frame.knockDown(frame.pins[0]);
+		frame.pins[0].down(this);
 		frame.assessPins(this);
 		expect(frame.score(this)).toEqual(1);
 	});
-
-	// it('should not have a second roll if there is a strike',function(){
-	// 	frame.receivePins(this);
-	// 	frame.addRoll(roll1);
-	// 	roll1.strike(frame);
-	// 	frame.assessPins(this);
-	// 	expect(frame.addRoll(roll2).throwError("Strike already")).toBe(true);
-
-	// });
-
-
-});
-
-describe('A roll',function(){
-
-	var roll;
-	var pin;
-	var frame;
-
-	beforeEach(function(){
-		roll = new Roll;
-
-	});
-
-	// it('can knock down pins',function(){
-	// 	pin = new Pin;
-	// 	roll.knockDown(pin)
-	// 	expect(pin.isUp).toBe(false);
-
-	// });
-
-
 
 });
 

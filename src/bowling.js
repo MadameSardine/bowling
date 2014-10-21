@@ -42,10 +42,6 @@ Frame.prototype.receivePins = function() {
 	
 };
 
-Frame.prototype.knockDown = function(pin) {
-	pin.down();
-	
-};
 
 Frame.prototype.strike = function() {
 	this.pins.forEach(function(pin) {

@@ -26,12 +26,14 @@ Frame.prototype.addRoll = function(roll) {
 };
 
 Frame.prototype.assessPins = function() {
-	for (i = 0 ; i <10 ; i++)
+	for (i = this.pins.length-1 ; i >=0 ; i--)
 		if(this.pins[i].isUp === false){
 			this.pinsDown.push(this.pins[i])
 		};
-	this.pins.splice(0,1)
-	
+	for (i = this.pins.length-1 ; i >=0 ; i--)
+		if(this.pins[i].isUp === false){
+		this.pins.splice(i, 1)
+	};
 };
 
 Frame.prototype.receivePins = function() {
@@ -42,10 +44,11 @@ Frame.prototype.receivePins = function() {
 
 Frame.prototype.knockDown = function(pin) {
 	pin.down();
+	
 };
 
-Roll.prototype.strike = function(frame) {
-	frame.pins.forEach(function(pin) {
+Frame.prototype.strike = function() {
+	this.pins.forEach(function(pin) {
 		pin.down(this);
 	}) ;
 };

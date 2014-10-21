@@ -77,10 +77,10 @@ describe('A Bowling game frame',function(){
 
 	it('has a strike if 10 pins are knocked down in a roll',function(){
 		frame.receivePins(this);
-		frame.addRoll(roll1);
-		roll1.strike(frame);
+		frame.strike(this);
 		frame.assessPins(this);
 		expect(frame.pinsDown.length).toEqual(10);
+		expect(frame.pins.length).toEqual(0);
 	});
 
 	// it('should not have a second roll if there is a strike',function(){

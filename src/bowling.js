@@ -1,93 +1,41 @@
-function Game(){
-	this.frames = [];
-
-};
-
-function Frame(){
-	this.rolls = [];
-	this.pins = [];
-	this.pinsDown = [];
-};
-
-function Roll(){
-	this.frame = null;
-	this.rollScore = 0;
-};
 
 function Pin(){
 	this.isUp = true;
 };
 
-Game.prototype.addFrame = function(frame) {
-	this.frames.push(frame);
+function Roll(){
+	this.type = "roll";
+	this.rollScore = 0;
+	this.isStrike = false;
 };
 
-Game.prototype.scoreBeforeBonus = function() {
-	var total = 0;
-	for (i = 0 ; i < this.frames.length ; i++)
-		{total += this.frames[i].score(this)
-		};
-		return total;
-};
-
-Game.prototype.strikeBonus = function(frame) {
-	var frameIndex = this.frames.indexOf(frame);
-	if (frame.isStrike(this)){
-		return this.frames[frameIndex +1].score(this)
-	};
-};
-
-Game.prototype.spareBonus = function(frame) {
-	var frameIndex = this.frames.indexOf(frame);
-	if (frame.isSpare(this)){
-		return this.frames[frameIndex + 1].rolls[0].rollScore
-	};
-};
-
-Frame.prototype.addRoll = function(roll) {
-	this.rolls.push(roll);
-	roll.frame = this;
-};
-
-
-Frame.prototype.assessPins = function() {
-	for (i = this.pins.length-1 ; i >=0 ; i--)
-		if(this.pins[i].isUp === false){
-			this.pinsDown.push(this.pins[i])
-		};
-	for (i = this.pins.length-1 ; i >=0 ; i--)
-		if(this.pins[i].isUp === false){
-		this.pins.splice(i, 1)
-	};
-};
-
-Frame.prototype.receivePins = function() {
-	for (i = 0 ; i <10 ; i++)
-		this.pins.push(new Pin);
-};
-
-
-Frame.prototype.score = function() {
-	return this.pinsDown.length;
-};
-
-Frame.prototype.isSpare = function() {
-	return this.score(this) === 10;
-};
-
-Frame.prototype.isStrike = function(first_argument) {
-	return (this.score(this) === 10 && !this.rolls[1]) ;
-};
-
-Roll.prototype.knockDown = function(pin) {
-	pin.down(this);
-	this.rollScore += 1;
-};
+function Frame(){
+	this.type = 'frame';
+	this.frameScore = 0;
+	this.roll1 = new Roll;
+	this.roll2 = new Roll;
+	this.hasStrike = false;
+	this.hasSpare = false;
+}
 
 
 Pin.prototype.down = function() {
 	this.isUp = false;
 };
+
+Roll.prototype.knockDown = function(pin) {
+	pin.down();
+	this.rollScore +=1;
+	if(this.rollScore === 10){this.isStrike = true};
+};
+
+Frame.prototype.calculateScore = function() {
+	this.frameScore = this.roll1.rollScore + this.roll2.rollScore
+	if (this.roll1.rollScore === 10){this.hasStrike = true}
+	if (this.frameScore === 10) {this.hasSpare = true}
+};
+
+
 
 	
 

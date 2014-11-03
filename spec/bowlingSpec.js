@@ -26,10 +26,6 @@ describe ('A roll',function(){
 		roll = new Roll
 	});
 
-	it('is a roll',function(){
-		expect(roll.type).toEqual("roll");
-	});
-
 	it('can knock down pins', function(){
 		pin = new Pin
 		roll.knockDown(pin);
@@ -69,23 +65,29 @@ describe('A frame', function(){
 		roll2 = new Roll;
 	});
 
-	it('is a frame',function(){
-		expect(frame.type).toEqual('frame')
-	});
-
 	it('has a score of zero at inception',function(){
 		expect(frame.frameScore).toEqual(0);
 	});
 
-	it('has a first roll',function(){
-		expect(frame.roll1.type).toEqual("roll");
+	it("doesn't have a roll at inception",function(){
+		expect(frame.roll1).toBe(null)
+		expect(frame.roll2).toBe(null)
+	});
+
+	it('can add a first roll',function(){
+		frame.addRoll(roll1)
+		expect(frame.roll1).toEqual(roll1);
 	});
 
 	it('has a second roll',function(){
-		expect(frame.roll2.type).toEqual("roll");
+		frame.addRoll(roll1)
+		frame.addRoll(roll2)
+		expect(frame.roll2).toEqual(roll2);
 	});
 
 	it('can calculate its score',function(){
+		frame.addRoll(roll1)
+		frame.addRoll(roll2)
 		frame.roll1.rollScore = 1;
 		frame.roll2.rollScore = 2;
 		frame.calculateScore();
@@ -97,6 +99,8 @@ describe('A frame', function(){
 	});
 
 	it('knows if it has a strike',function(){
+		frame.addRoll(roll1)
+		frame.addRoll(roll2)
 		frame.roll1.rollScore = 10;
 		frame.roll2.rollScore = 0;
 		frame.calculateScore();
@@ -108,6 +112,8 @@ describe('A frame', function(){
 	});
 
 	it('knows if it has a spare',function(){
+		frame.addRoll(roll1)
+		frame.addRoll(roll2)
 		frame.roll1.rollScore = 1;
 		frame.roll2.rollScore = 9;
 		frame.calculateScore();

@@ -35,7 +35,10 @@ Frame.prototype.calculateScore = function() {
 };
 
 Frame.prototype.addRoll = function(roll) {
-	if (this.roll1) {this.roll2 = roll  }
+	if (this.roll1) {
+		if (this.roll1.isStrike) { this.roll2 = null}
+			else {this.roll2 = roll } 
+	}
 	else {this.roll1 = roll};
 };
 

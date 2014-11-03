@@ -107,6 +107,13 @@ describe('A frame', function(){
 		expect(frame.hasStrike).toBe(true);
 	});
 
+	it("doesn't have a second roll if the first roll is a strike",function(){
+		frame.addRoll(roll1);
+		frame.roll1.isStrike = true;
+		frame.addRoll(roll2)
+		expect(frame.roll2).toEqual(null)
+	});
+
 	it("doesn't have a spare by default",function(){
 		expect(frame.hasSpare).toBe(false);
 	});
@@ -120,6 +127,7 @@ describe('A frame', function(){
 		expect(frame.hasStrike).toBe(false);
 		expect(frame.hasSpare).toBe(true);
 	});
+
 
 });
 
